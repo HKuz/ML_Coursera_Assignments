@@ -13,10 +13,12 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
-temp = (X * theta);  % mx2 * 2x1 creates mx1 matrix of h(x)
-temp = temp - y;    % mx1 matrix of h(x) minus mx1 matrix y
-temp = temp .^2;     % take element-wise square of all differences
-J = (1/(2*m)) * sum(temp);
+% temp = (X * theta) - y;   % mx2 * 2x1 -> mx1 matrix of h(x) - mx1 y
+% temp = temp .^2;          % take element-wise square
+% J = (1/(2*m)) * sum(temp);
+
+% Vectorized version
+J = (1/(2*m)) * ((X * theta - y)' * (X * theta - y));
 
 
 % =========================================================================

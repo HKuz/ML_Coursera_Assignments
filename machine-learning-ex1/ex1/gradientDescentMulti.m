@@ -17,12 +17,12 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
-    % Element-wise mult of h(x)-y and feature columns of X, sum
-    % all columns to get 1x(n+1) matrix, scaled by alpha/m
-    adj = (alpha / m) * sum(((X * theta - y) .* X))
+    % X' [(n+1)xm] times h(x)-y vector [mx1] -> get (n+1)x1 vector
+    % Scale vector by alpha/m
+    adj = (alpha / m) * (X' * (X * theta - y));
 
-    % Simultaneously update thetas, subtracts transpose so dimensions match
-    theta = theta - adj';
+    % Simultaneously update thetas
+    theta = theta - adj;
 
     % ============================================================
 
