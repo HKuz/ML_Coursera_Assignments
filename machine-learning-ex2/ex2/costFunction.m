@@ -25,7 +25,7 @@ grad = zeros(size(theta));
 % 1/m * 1x1 => number
 
 h_x = sigmoid(X * theta);
-J = (1/m) * (-y' * log(h_x) - (1 - y)' * log(1 - h_x));
+J = (1 / m) * (-y' * log(h_x) - (1 - y)' * log(1 - h_x));
 
 % X' (n+1)xm * h_x mx1 => (n+1)x1
 grad = (1/m) * (X'*(h_x - y));
