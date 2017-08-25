@@ -79,25 +79,25 @@ z3 = a2 * Theta2';
 
 a3 = sigmoid(z3);
 
-new_y = eye(num_labels)(y,:);
+% Cost Function Calcs
+ry = eye(num_labels)(y,:);
 
+cost = ry.*log(a3) + (1 - ry).*log(1 - a3);
+J = -sum(sum(cost,2)) / m;
 
+reg = sum(sum(Theta1(:,2:end).^2)) + sum(sum(Theta2(: , 2:end).^2));
 
+J = J + lambda/(2*m)*reg;
 
+% Back Propagation
+delta3 = a3 - ry;
+delta2 = (delta3*Theta2)(:,2:end) .* sigmoidGradient(z2);
 
+Delta1 = delta2'*a1;
+Delta2 = delta3'*a2;
 
-
-
-
-
-
-
-
-
-
-
-
-
+Theta1_grad = Delta1 / m + lambda*[zeros(hidden_layer_size , 1) Theta1(:,2:end)] / m;
+Theta2_grad = Delta2 / m + lambda*[zeros(num_labels , 1) Theta2(:,2:end)] / m;
 
 
 % -------------------------------------------------------------
