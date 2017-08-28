@@ -81,8 +81,12 @@ a3 = sigmoid(z3);
 
 % Cost Function Calcs
 ry = eye(num_labels)(y,:);
+% size(ry)  % 5000x10
 
 cost = ry.*log(a3) + (1 - ry).*log(1 - a3);
+% fprintf('Size of cost: ');
+% size(cost)  % 5000x10
+
 J = -sum(sum(cost,2)) / m;
 
 reg = sum(sum(Theta1(:,2:end).^2)) + sum(sum(Theta2(: , 2:end).^2));
