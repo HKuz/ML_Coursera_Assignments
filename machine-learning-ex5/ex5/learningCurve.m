@@ -57,7 +57,6 @@ error_val   = zeros(m, 1);
 % theta = trainLinearReg(X, y, lambda)
 % [J_train, grad] = linearRegCostFunction(X, y, theta, 0);
 for i = 1:m,
-    % TO DO
     X_temp = X(1:i, :);
     y_temp = y(1:i);
     theta_temp = trainLinearReg(X_temp, y_temp, lambda);
@@ -67,9 +66,6 @@ for i = 1:m,
     [J_val, grad_val] = linearRegCostFunction(Xval, yval, theta_temp, 0);
     error_val(i) = J_val;
 end
-
-
-
 
 % -------------------------------------------------------------
 
