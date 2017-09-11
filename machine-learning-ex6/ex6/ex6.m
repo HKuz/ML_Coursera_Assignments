@@ -140,6 +140,8 @@ load('ex6data3.mat');
 
 % Try different SVM Parameters here
 [C, sigma] = dataset3Params(X, y, Xval, yval);
+sprintf('Value for C: %0.3f', C)
+sprintf('Value for sigma: %0.3f', sigma)
 
 % Train the SVM
 model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
